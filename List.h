@@ -3,22 +3,27 @@
 
 #include "AbstractSubject.h"
 #include <map>
+#include "Item.h"
 
-class List : public Subject {
+class List : public AbstractSubject {
 public:
-    void attach(Observer* observer) override {
-        observers.push_back(observer);
-    }
 
-    void detach(Observer* observer) override {
-        observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
-    }
+    List(std::string list_name) : list_name(list_name) {}
 
     void notify() override {
-        for (Observer* observer : observers) {
+        for (Observer* observer : users) {
             observer->update();
         }
     }
+
+    void subscribe(Observer* observer) override {
+        users.push_back(observer);
+    }
+
+    void unsubscribe(Observer* observer) override {
+        users.remove(observer);
+    }
+
 
     void add_item(Item item) {
         //check if item is in the map

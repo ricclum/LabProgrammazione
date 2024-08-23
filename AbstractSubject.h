@@ -6,12 +6,12 @@
 
 class AbstractSubject {
 public:
-    virtual ~AbstractSubject() {}; 
-    virtual void attach(Observer* observer) = 0;
-    virtual void detach(Observer* observer) = 0;
+    virtual ~AbstractSubject() {};
     virtual void notify() = 0;
-private:
-    std::list<Observer*> observers;
+    virtual void subscribe(Observer* observer) = 0;
+    virtual void unsubscribe(Observer* observer) = 0;
+protected:
+    std::list<Observer*> users;
 };
 
-#endif 
+#endif
