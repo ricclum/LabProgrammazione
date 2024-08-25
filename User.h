@@ -20,11 +20,11 @@ public:
         // Do something
     }
 
-    void attach(AbstractSubject* list) override{
+    void attach(List* list) {
         list->subscribe(this);
     }
 
-    void detach(AbstractSubject* list) override {
+    void detach(List* list) {
         list->unsubscribe(this);
     }
 

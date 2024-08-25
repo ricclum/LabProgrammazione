@@ -25,7 +25,7 @@ public:
     }
 
 
-    void add_item(Item item) {
+    void add_item(const Item&  item) {
         //check if item is in the map
         if (items.find(item) == items.end()) {
             //add item to the map
@@ -38,7 +38,7 @@ public:
         notify();
     }
 
-    void remove_item(Item item) {
+    void remove_item(const Item& item) {
         if (items[item] > 0) {
             items[item]--;
             notify();
@@ -47,7 +47,7 @@ public:
 
 
 private:
-    std::map<Item,int> items;
+    std::map<Item, int> items;
     std::string list_name;
 };
 
