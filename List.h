@@ -10,40 +10,15 @@ public:
 
     List(std::string list_name) : list_name(list_name) {}
 
-    void notify() override {
-        for (Observer* observer : users) {
-            observer->update();
-        }
-    }
-
-    void subscribe(Observer* observer) override {
-        users.push_back(observer);
-    }
-
-    void unsubscribe(Observer* observer) override {
-        users.remove(observer);
-    }
-
-
-    void add_item(const Item&  item) {
-        //check if item is in the map
-        if (items.find(item) == items.end()) {
-            //add item to the map
-            items[item] = 1;
-        }
-        else{
-            //increment the item count
-            items[item]++;
-        }
-        notify();
-    }
-
-    void remove_item(const Item& item) {
-        if (items[item] > 0) {
-            items[item]--;
-            notify();
-        }
-    }
+    std::string get_list_name() const;
+    void add_item(const Item& item, int quantity);
+    void remove_item(const Item& item);
+    void notify() override;
+    void subscribe(Observer* observer) override;
+    void unsubscribe(Observer* observer) override;
+    int get_total_size() const;
+    int get_quantity(const Item& item) const;
+    bool remove_item(const Item& item, int quantity);
 
 
 private:

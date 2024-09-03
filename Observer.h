@@ -6,7 +6,7 @@
 class Observer {
 public:
     virtual ~Observer() {};
-    virtual void update() = 0;
+    virtual void update(const std::string& sub_name) = 0;
 };
 
 #endif
