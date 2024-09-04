@@ -1,15 +1,15 @@
 #include "Item.h"
 
 // Getters
-std::string Item::getName() const {
+const std::string& Item::getName() const {
     return name;
 }
 
-std::string Item::getCategory() const {
+const std::string& Item::getCategory() const {
     return category;
 }
 
-std::string Item::getBrand() const {
+const std::string& Item::getBrand() const{
     return brand;
 }
 

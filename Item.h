@@ -4,13 +4,27 @@ class Item {
 
 public:
     // Constructor
-    Item(std::string name, std::string category, std::string brand)
-            : name(this->name), category(this->category), brand(this->brand) {}
+    Item(const std::string& name, const std::string& category, const std::string& brand)
+            : name(name), category(category), brand(brand) {}
+
+    //Overload per permettere il confronto tra elementi
+    bool operator<(const Item& other) const {
+        return name < other.getName();
+    }
+
+    bool operator>(const Item& other) const {
+        return name > other.getName();
+    }
+
+    bool operator==(const Item& other) const {
+        return name == other.getName();
+    }
+
 
     // Getters
-    std::string getName() const;
-    std::string getCategory() const;
-    std::string getBrand() const;
+    const std::string& getName() const ;
+    const std::string& getCategory() const ;
+    const std::string& getBrand() const ;
 
     // Setters
     void setName(const std::string& name);

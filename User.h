@@ -1,7 +1,6 @@
 #ifndef USER_H
 #define USER_H
 
-#include "Observer.h"
 #include <string>
 #include <list>
 #include "List.h"
@@ -10,14 +9,14 @@
 
 class User : public Observer {
 public:
-    User(const std::string& name) : name(name) {}
-    ~User();
+    User(const std::string& name) : name(name) {};
+    ~User() override;
 
     //Lascio virtual perchè una classe tester deve poter fare l'override
     virtual void update(const std::string& sub_name) override;
 
-    void attach(List* list);
-    void detach(List* list);
+    void attach(AbstractSubject* sub) override;
+    void detach(AbstractSubject* sub) override;
     void add_list(List* list);
 
     std::string get_name() const;

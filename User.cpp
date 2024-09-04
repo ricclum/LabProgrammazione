@@ -10,11 +10,11 @@ void User::update(const std::string& sub_name){
     std::cout << "User " << this->name<< " received an update from the list: " << sub_name << std::endl;
 }
 
-void User::attach(List* list) {
+void User::attach(AbstractSubject* list) {
     list->subscribe(this);
 }
 
-void User::detach(List* list) {
+void User::detach(AbstractSubject* list) {
     list->unsubscribe(this);
 }
 

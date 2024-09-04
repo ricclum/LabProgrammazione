@@ -4,7 +4,7 @@
 #include "AbstractSubject.h"
 #include <map>
 #include "Item.h"
-
+#include "Observer.h"
 class List : public AbstractSubject {
 public:
 
