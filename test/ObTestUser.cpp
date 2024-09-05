@@ -21,7 +21,6 @@ protected:
         return last_list_name;
     }
 
-private:
     int update_called_count;
     std::string last_list_name;
 };
