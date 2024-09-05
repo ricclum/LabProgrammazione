@@ -1,4 +1,7 @@
 #include <string>
+#ifndef ITEM_H
+#define ITEM_H
+
 
 class Item {
 
@@ -38,3 +41,5 @@ private:
     std::string brand;
 
 };
+
+#endif  // ITEM_H

@@ -4,19 +4,23 @@
 // Test fixture for the List class
 class ListTest : public ::testing::Test {
 protected:
+    // Constructor
+    ListTest() : item1("prosciutto crudo", "gastronomia", "Citterio"),
+                item2("prosciutto cotto", "gastronomia", "Citterio"),
+              item3("Bagno schiuma", "igiene", "Nivea"),
+              lista(new List("lista1")){}
+
+    // Destructor
+    ~ListTest() override {
+        delete lista;
+    }
 
 	// Set up 
 	void SetUp() override {
-         //Create some items
-        item1 = Item("prosciutto crudo", "gastronomia", "Citterio");
-        item2 = Item("prosciutto cotto", "gastronomia", "Citterio");
-        item3 = Item("Bagno schiuma", "igiene", "Nivea");
 
-        lista = new List("lista1");
         lista->add_item(item1, 2);
         lista->add_item(item2, 3);
         lista->add_item(item3, 1);
-
     }
 
     List* lista;

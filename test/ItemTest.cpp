@@ -1,5 +1,5 @@
-#include "../Item.h"
 #include "gtest/gtest.h"
+#include "../Item.h"
 
 TEST(ItemTest, TestGetters) {
     // Create an item object
