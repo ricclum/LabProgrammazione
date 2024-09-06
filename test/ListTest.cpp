@@ -4,18 +4,16 @@
 // Test fixture for the List class
 class ListTest : public ::testing::Test {
 protected:
-    // Constructor
+
     ListTest() : item1("prosciutto crudo", "gastronomia", "Citterio"),
                 item2("prosciutto cotto", "gastronomia", "Citterio"),
               item3("Bagno schiuma", "igiene", "Nivea"),
               lista(new List("lista1")){}
 
-    // Destructor
     ~ListTest() override {
         delete lista;
     }
 
-	// Set up 
 	void SetUp() override {
 
         lista->add_item(item1, 2);
@@ -30,7 +28,7 @@ protected:
 };
 
 
-// Test case for adding elements to the list
+// Test per aggiunta
 TEST_F(ListTest, AddTest) {
     Item item4 = Item("Hamburger", "macelleria", "Montana");
 	lista->add_item(item4, 4);
@@ -38,7 +36,7 @@ TEST_F(ListTest, AddTest) {
 }
 
 
-// Test case for removing elements from the list
+// Test per rimozione
 TEST_F(ListTest, RemoveTest) {
     Item item = Item("Salame Milano", "gastronomia", "Beretta");
     lista->add_item(item, 2);

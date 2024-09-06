@@ -23,6 +23,16 @@ void User::add_list(List* list) {
     attach(list);
 }
 
+bool User::remove_list(List* list) {
+    for (auto it = lists.begin(); it != lists.end(); ++it) {
+        if (*it == list) {
+            lists.erase(it);
+            return true;
+        }
+    }
+    return false;
+}
+
 std::string User::get_name() const {
     return name;
 }

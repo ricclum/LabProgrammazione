@@ -18,7 +18,7 @@ public:
     void attach(AbstractSubject* sub) override;
     void detach(AbstractSubject* sub) override;
     void add_list(List* list);
-
+    bool remove_list(List* list);
     std::string get_name() const;
     void set_name(const std::string& name);
 

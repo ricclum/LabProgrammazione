@@ -1,8 +1,14 @@
 #include "List.h"
 
 
-std::string List::get_list_name() const {
+const std::string& List::get_list_name() const {
     return list_name;
+}
+
+
+void List::set_list_name(const std::string& name) {
+    list_name = name;
+    notify();
 }
 
 void List::add_item(const Item&  item, int quantity) {
@@ -18,10 +24,19 @@ void List::add_item(const Item&  item, int quantity) {
     notify();
 }
 
+bool List::check_item(const Item&  item) const{
+    //check if item is in the map
+    if (items.find(item) == items.end()) {
+        return false;
+    }
+    return true;
+}
 
-void List::remove_item(const Item& item) {
-    if (items[item] > 0) {
-        items[item]--;
+void List::remove_item(const Item& item, int quantity) {
+    if (items[item] >= quantity) {
+        items[item]-=quantity;
+        if (items[item]==0)
+            items.erase(item);
         notify();
     }
 }
@@ -48,21 +63,6 @@ int List::get_total_size() const {
     return total;
 }
 
-bool List::remove_item(const Item& item, int quantity) {
-    if (items.find(item) != items.end()) {
-        if (items[item] >= quantity) {
-            items[item] -= quantity;
-
-            if (items[item] == 0) {
-                items.erase(item);
-            }
-
-            notify();
-            return true;
-        }
-    }
-    return false;
-}
 
 int List::get_quantity(const Item& item) const {
     if (items.find(item) != items.end()) {
