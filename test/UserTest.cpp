@@ -2,33 +2,30 @@
 #include "../User.h"
 
 
-class UserTest : public ::testing::Test {
-protected:
-	UserTest() :user("testUser"){}
-    User user;
-};
-
 // Construttore
-TEST_F(UserTest, ConstructorTest) {
-	EXPECT_EQ(user.get_name(), "testUser");
+TEST(UserTest, ConstructorTest) {
+    User utente("testUser");
+	EXPECT_EQ(utente.get_name(), "testUser");
 }
 
 // Setter per username
-TEST_F(UserTest, SetUsernameTest) {
-	user.set_name("JaneDoe");
-	EXPECT_EQ(user.get_name(), "JaneDoe");
+TEST(UserTest, SetUsernameTest) {
+    User utente("testUser");
+	utente.set_name("tester2");
+	EXPECT_EQ(utente.get_name(), "tester2");
 }
 
-// Test per aggiunta lista e rimozione a utente
-TEST_F(UserTest, AddRmListTest) {
+// Test per aggiunta lista e rimozione
+TEST(UserTest, AddRmListTest) {
+    User utente("testUser");
 	List*  list = new List("lista1");
-	user.add_list(list);
+	utente.add_list(list);
 
-	EXPECT_EQ(user.get_lists().size(), 1);
+	EXPECT_EQ(utente.get_lists().size(), 1);
 
     //Rimuovo
-    user.remove_list(list);
-    EXPECT_EQ(user.get_lists().size(), 0);
+    utente.remove_list(list);
+    EXPECT_EQ(utente.get_lists().size(), 0);
 
     delete list;
 }

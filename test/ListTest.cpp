@@ -28,22 +28,42 @@ protected:
 };
 
 
-// Test per aggiunta
+//Test per cambio del nome
+TEST_F(ListTest, ChangeNameTest) {
+    lista->set_list_name("lista2");
+    EXPECT_EQ(lista->get_list_name(), "lista2");
+}
+
+//Test per total size della lista
+TEST_F(ListTest, TotalSizeTest) {
+    EXPECT_EQ(lista->get_total_size(), 6);
+}
+
+// Test per aggiunta e quantity
 TEST_F(ListTest, AddTest) {
     Item item4 = Item("Hamburger", "macelleria", "Montana");
 	lista->add_item(item4, 4);
-	EXPECT_EQ(lista->get_total_size(), 10);
+	EXPECT_EQ(lista->get_quantity(item4), 4);
 }
 
 
 // Test per rimozione
 TEST_F(ListTest, RemoveTest) {
-    Item item = Item("Salame Milano", "gastronomia", "Beretta");
-    lista->add_item(item, 2);
-	lista->remove_item(item, 1);
 
-	EXPECT_EQ(lista->get_quantity(item), 1);
+    lista->remove_item(item1, 1);
+    EXPECT_EQ(lista->get_quantity(item1), 1);
 
-    lista->remove_item(item, 1);
-	EXPECT_EQ(lista->get_quantity(item), 0);
+    lista->remove_item(item1, 1);
+    EXPECT_EQ(lista->get_quantity(item1), 0);
+
+}
+
+//Test per ricerca elementi nella lista
+TEST_F(ListTest, CheckTest) {
+
+    //Elimino item1
+    lista->remove_item(item1, 2);
+    EXPECT_FALSE(lista->check_item(item1));
+
+    EXPECT_TRUE(lista->check_item(item2));
 }

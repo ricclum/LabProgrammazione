@@ -4,24 +4,25 @@
 //Test per getter
 TEST(ItemTest, TestGetters) {
 
-    Item item("Shirt", "Clothing", "Nike");
+    Item item("Mortadella Bologna", "Gastronomia", "Beretta");
 
-    EXPECT_EQ(item.getName(), "Shirt");
-    EXPECT_EQ(item.getCategory(), "Clothing");
-    EXPECT_EQ(item.getBrand(), "Nike");
+    EXPECT_EQ(item.getName(), "Mortadella Bologna");
+    EXPECT_EQ(item.getCategory(), "Gastronomia");
+    EXPECT_EQ(item.getBrand(), "Beretta");
 }
 
 //Test per setter
 TEST(ItemTest, TestSetters) {
 
-    Item item("Shirt", "Clothing", "Nike");
+    Item item("Mortadella Bologna", "Gastronomia", "Beretta");
 
 
-    item.setName("Pants");
-    item.setCategory("Bottoms");
+
+    item.setName("Bagno Schiuma");
+    item.setCategory("Igiene Personale");
     item.setBrand("Adidas");
 
-    EXPECT_EQ(item.getName(), "Pants");
-    EXPECT_EQ(item.getCategory(), "Bottoms");
+    EXPECT_EQ(item.getName(), "Bagno Schiuma");
+    EXPECT_EQ(item.getCategory(), "Igiene Personale");
     EXPECT_EQ(item.getBrand(), "Adidas");
 }
