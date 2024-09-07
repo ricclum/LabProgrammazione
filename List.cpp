@@ -12,7 +12,7 @@ void List::set_list_name(const std::string& name) {
 }
 
 void List::add_item(const Item&  item, int quantity) {
-    //check if item is in the map
+    //check if item is not in the map
     if (items.find(item) == items.end()) {
         //add item to the map
         items[item] = quantity;

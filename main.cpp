@@ -1,4 +1,3 @@
-//Main File
 #include <iostream>
 #include "User.h"
 
