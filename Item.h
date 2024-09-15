@@ -7,8 +7,8 @@ class Item {
 
 public:
     // Constructor
-    Item(const std::string& name, const std::string& category, const std::string& brand)
-            : name(name), category(category), brand(brand) {}
+    Item(){}
+    Item(const std::string& name, int quantity = 1, bool purchased = false) : name(name), quantity(quantity), purchased(purchased) {}
 
     //Overload per permettere il confronto tra elementi
     bool operator<(const Item& other) const {
@@ -25,20 +25,21 @@ public:
 
 
     // Getters
-    const std::string& getName() const ;
-    const std::string& getCategory() const ;
-    const std::string& getBrand() const ;
+    const std::string& getName() const;
+    int getQuantity() const;
+    bool isPurchased() const;
 
     // Setters
     void setName(const std::string& name);
-    void setCategory(const std::string& category);
-    void setBrand(const std::string& brand);
+    void setQuantity(int quantity);
+    void setPurchased(bool purchased);
+   
 
 
 private:
     std::string name;
-    std::string category;
-    std::string brand;
+    int quantity;
+    bool purchased;
 
 };
 

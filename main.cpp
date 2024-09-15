@@ -1,14 +1,16 @@
 #include <iostream>
 #include "User.h"
 
+
 int main(){
-    Item item1("pizza", "gastronomia", "Buitoni");
+    Item item1("pizza", 1, false);
 
-    List* lista1 = new List("spesa coop");
-    List* lista2 = new List("spesa conad");
+    std::shared_ptr<List> lista1 = std::make_shared<List>("lista1");
+    std::shared_ptr<List> lista2 = std::make_shared<List>("lista2");
 
-    lista1->add_item(item1, 2);
-    lista2->add_item(item1, 3);
+
+    lista1->add_item("pizza", item1);
+    lista2->add_item("pizza", item1);
 
 
     User utente1("Riccardo");
@@ -19,9 +21,6 @@ int main(){
     utente1.add_list(lista2);
     utente2.add_list(lista1);
     utente2.add_list(lista2);
-
-
-    lista1->add_item(Item("Prosciutto crudo", "gastronomia", "Beretta"), 2);
 
 }
 
