@@ -82,7 +82,7 @@ TEST(UserTest, ObserverPatternTestAddItem) {
     utente->add_list(list);
 
     // Aggiunge un elemento alla lista
-    list->add_item("Mela", Item("Mela", 3, false));
+    list->add_item(Item("Mela", 3, false));
 
     // Verifica che il metodo update dell'utente sia stato chiamato una volta (per l'aggiunta)
     EXPECT_EQ(utente->get_update_count(), 1);
@@ -99,10 +99,10 @@ TEST(UserTest, ObserverPatternTestRemoveItem) {
 
     // Aggiunge un elemento alla lista
     Item item("Sapone", 2, false);
-    list->add_item("Sapone", item);
+    list->add_item(item);
 
     // Rimuove l'elemento dalla lista
-    list->remove_item("Sapone");
+    list->remove_item(item);
 
     // Verifica che il metodo update dell'utente sia stato chiamato due volte (una per l'aggiunta e una per la rimozione)
     EXPECT_EQ(utente->get_update_count(), 2);

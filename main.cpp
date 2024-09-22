@@ -9,8 +9,8 @@ int main(){
     std::shared_ptr<List> lista2 = std::make_shared<List>("lista2");
 
 
-    lista1->add_item("pizza", item1);
-    lista2->add_item("pizza", item1);
+    lista1->add_item(item1);
+    lista2->add_item(item1);
 
 
     User utente1("Riccardo");

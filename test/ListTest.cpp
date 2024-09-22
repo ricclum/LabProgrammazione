@@ -12,9 +12,9 @@ protected:
 
 	void SetUp() override {
 
-        lista->add_item("prosciutto crudo", item1);
-        lista->add_item("prosciutto cotto", item2);
-        lista->add_item("Bagno schiuma", item3);
+        lista->add_item(item1);
+        lista->add_item(item2);
+        lista->add_item(item3);
     }
 
     std::shared_ptr<List> lista;
@@ -38,45 +38,57 @@ TEST_F(ListTest, TotalSizeTest) {
 // Test per aggiunta e quantity
 TEST_F(ListTest, AddTest) {
     Item item4 = Item("Hamburger", 2, false);
-	lista->add_item("Hamburger", item4);
-	EXPECT_EQ(lista->get_quantity("Hamburger"), 2);
+	lista->add_item(item4);
+	EXPECT_EQ(lista->get_quantity(item4), 2);
 }
 
 
 // Test per rimozione
 TEST_F(ListTest, RemoveTest) {
 
-    lista->remove_item("prosciutto crudo");
-    EXPECT_EQ(lista->get_quantity("prosciutto crudo"), 0);
+    lista->remove_item(item1);
+    EXPECT_THROW(lista->get_quantity(item1), std::invalid_argument);
 
 }
+
 
 //Test per ricerca elementi nella lista
 TEST_F(ListTest, CheckTest) {
 
-    EXPECT_FALSE(lista->check_item("Panna da cucina"));
-    EXPECT_TRUE(lista->check_item("prosciutto crudo"));
+    EXPECT_FALSE(lista->check_item(Item("Panna da cucina", 2, false)));
+    EXPECT_TRUE(lista->check_item(Item("prosciutto crudo", 1, false)));
 }
 
 //Test per set purchased
 TEST_F(ListTest, SetPurchasedTest) {
 
-    lista->set_purchased("prosciutto crudo", true);
-    EXPECT_TRUE(lista->is_purchased("prosciutto crudo"));
+    lista->set_purchased(item1.getCategory(), true);
+    EXPECT_TRUE(lista->is_purchased(item1.getCategory()));
 }
+
 
 //Test per quantity
 TEST_F(ListTest, QuantityTest) {
 
-    lista->set_quantity("prosciutto crudo", 2);
-    EXPECT_EQ(lista->get_quantity("prosciutto crudo"), 2);
+    lista->set_quantity(item1.getCategory(), 2);
+    EXPECT_EQ(lista->get_quantity(item1), 2);
 }
+
+
 
 //Test per lista completata
 TEST_F(ListTest, CompletedTest) {
-
-    lista->set_purchased("prosciutto crudo", true);
-    lista->set_purchased("prosciutto cotto", true);
-    lista->set_purchased("Bagno schiuma", true);
+    lista->set_purchased(item1.getCategory(), true);
+    lista->set_purchased(item2.getCategory(), true);
+    lista->set_purchased(item3.getCategory(), true);
     EXPECT_TRUE(lista->is_completed());
+}
+
+
+//Test per rimanente nella lista
+TEST_F(ListTest, RemainingTest) {
+
+    lista->set_purchased(item1.getCategory(), true);
+    lista->set_purchased(item2.getCategory(), true);
+    EXPECT_EQ(lista->get_total_remaining(), 2);
 }

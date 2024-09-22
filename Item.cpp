@@ -1,8 +1,8 @@
 #include "Item.h"
 
 // Getters
-const std::string& Item::getName() const {
-    return name;
+const std::string& Item::getCategory() const {
+    return category;
 }
 
 int Item::getQuantity() const {
@@ -14,8 +14,8 @@ bool Item::isPurchased() const {
 }
 
 // Setters
-void Item::setName(const std::string& name) {
-    this->name = name;
+void Item::setCategory(const std::string& category) {
+    this->category = category;
 }
 
 void Item::setQuantity(int quantity) {
