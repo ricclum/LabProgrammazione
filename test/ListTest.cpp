@@ -90,5 +90,5 @@ TEST_F(ListTest, RemainingTest) {
 
     lista->set_purchased(item1.getCategory(), true);
     lista->set_purchased(item2.getCategory(), true);
-    EXPECT_EQ(lista->get_total_remaining(), 2);
+    EXPECT_EQ(lista->get_total_remaining(), 1);
 }

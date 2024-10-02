@@ -109,7 +109,7 @@ int List::get_total_remaining() const {
     int total = 0;
     for (auto& item : items) {
         if (!item.second.isPurchased()) {
-            total += item.second.getQuantity();
+            total += 1;
         }
     }
     return total;

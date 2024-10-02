@@ -12,8 +12,9 @@
 class Item {
 
 public:
-    // Constructor
-    Item(){}
+    // Default Constructor
+    Item():category(""), quantity(0), purchased(false) {}
+
     Item(const std::string& category, int quantity = 0, bool purchased = false) : category(category), purchased(purchased) {
         if (quantity < 0) {
             throw std::invalid_argument("Quantity must be greater than or equal to 0");
